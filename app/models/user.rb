@@ -7,6 +7,11 @@ class User < ApplicationRecord
   has_many :books
   has_many :favorites
   
+  # チャット機能 #
+  has_many :user_rooms
+  has_many :chat
+  # チャット機能#
+  
   attachment :profile_image, destroy: false
 
   validates :name, length: {maximum: 20, minimum: 2}, uniqueness: true

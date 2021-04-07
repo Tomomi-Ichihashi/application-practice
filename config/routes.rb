@@ -8,4 +8,7 @@ Rails.application.routes.draw do
   
   root 'homes#top'
   get 'home/about' => 'homes#about'
+  
+  get 'chat/:id' => 'chats#show', as: 'chat'
+  resources :chats, only: [:create]
 end
