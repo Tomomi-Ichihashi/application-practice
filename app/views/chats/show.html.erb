@@ -1,11 +1,10 @@
 <div class="container">
 <h1><%= @user.name %>さんとのチャット</h1>
-<%= form_with model: @chat do |f| %>
+<%= form_with model: @chat, remote: true do |f| %>
 <%= f.text_field :message %>
 <%= f.hidden_field :room_id %>
 <%= f.submit "送信" %>
 <% end %>
-
 
 <table>
   <thead>
@@ -15,13 +14,8 @@
     </tr>
   </thead>
   
-  <tbody>
-    <% @chats.each do |chat| %>
-    <tr>
-     <td><%= chat.user.name %></td>
-     <td><%= chat.message %></td>
-    </tr>
-    <% end %>
+  <tbody class="chat_messages">
+   <%= render 'index', chats: @chats %>
   </tbody>
 </table>
 </div>
